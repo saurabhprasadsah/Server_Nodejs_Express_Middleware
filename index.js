@@ -1,39 +1,73 @@
-const http = require('http');
+const express = require("express")
+const users = require('./MOCK_DATA.json')
+const app = express()
+const PORT = 8000;
 
-const fs = require('fs')
+// app.get('/users',(req,res) =>{
+//     const html =`
+//     <ul>
+//          ${users.map((user) => `<li>${user.first_name}</li>`).join("  ")}
+//     </ul>
+//     `;
+//     res.send(html)
 
-const url = require('url')
+// });
 
-const myserver = http.createServer((req,res) =>{
-    const log = `${Date.now()}: ${req.url} New request received\n`;
 
-    const myurl =url.parse(req.url);
-    console.log(myurl);
+//Rest Api will be started.....
+app.get('/api/users',(req,res) =>{
+    return res.json(users)
+})
 
-    fs.appendFile("logo.txt", log, (err, data) =>{
-        switch(req.url){
-            case "/": 
-                          res.end("This is homepage");
-            break   
+// app.get('/api/users/:id',(req,res) =>{
+//     const id = Number(req.params.id);
+//     const user = users.find((user) => user.id === id);
+//     return res.json(user);
+// })
 
-            case "/about": 
-                          res.end("hello i am saurabh kumar");
-            break
-            default: 
-                          res.end("404 page not found")
 
-        }
-
+app.route("api/users/:id").get((req,res) =>{
+        const id = Number(req.params.id);
+        const user = users.find((user) => user.id === id);
+        return res.json(user);
     })
-})
-
-myserver.listen(8000,()=>{
-    
-    console.log("server will be started !");
-})
-
-
-// const os = require('os')
-// console.log(os.cpus().length) // in this os it will show the cpu threads in cpu.
+    .patch((req,res) =>{
+        return res.json({status: "pending"})
+    })
+    .delete((req,res) =>{
+        return res.json({status: "deleted"});
+    })
 
 
+
+
+// app.post('api/users',(req,res)=>{
+//    return res.json({status : "pending"})
+// })
+
+
+// app.patch('api/users/:id',(req,res)=>{
+//     return res.json({status : "pending"})
+// })
+
+
+// app.delete('api/users/:id',(req,res)=>{
+//     return res.json({status : "pending"})
+//  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen(PORT,() =>console.log(`Sever has started successfully at port no ${PORT}`));
