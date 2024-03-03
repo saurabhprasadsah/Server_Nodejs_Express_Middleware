@@ -3,6 +3,7 @@ const users = require('./MOCK_DATA.json')
 const app = express()
 const PORT = 8000;
 
+
 // app.get('/users',(req,res) =>{
 //     const html =`
 //     <ul>
@@ -42,33 +43,17 @@ app.route("api/users/:id").get((req,res) =>{
     })
 
 
-
-
 // app.post('api/users',(req,res)=>{
 //    return res.json({status : "pending"})
 // })
-
 
 // app.patch('api/users/:id',(req,res)=>{
 //     return res.json({status : "pending"})
 // })
 
-
 // app.delete('api/users/:id',(req,res)=>{
 //     return res.json({status : "pending"})
 //  })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
