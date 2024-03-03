@@ -15,9 +15,6 @@ const PORT = 8000;
 // });
 
 
-
-
-
 //Rest Api will be started.....
 app.get('/api/users',(req,res) =>{
     return res.json(users)
@@ -28,7 +25,6 @@ app.get('/api/users',(req,res) =>{
 //     const user = users.find((user) => user.id === id);
 //     return res.json(user);
 // })
-
 
 app.route("api/users/:id").get((req,res) =>{
         const id = Number(req.params.id);
@@ -42,7 +38,6 @@ app.route("api/users/:id").get((req,res) =>{
         return res.json({status: "deleted"});
     })
 
-
 // app.post('api/users',(req,res)=>{
 //    return res.json({status : "pending"})
 // })
@@ -54,8 +49,5 @@ app.route("api/users/:id").get((req,res) =>{
 // app.delete('api/users/:id',(req,res)=>{
 //     return res.json({status : "pending"})
 //  })
-
-
-
 
 app.listen(PORT,() =>console.log(`Sever has started successfully at port no ${PORT}`));
