@@ -14,7 +14,6 @@ const PORT = 8000;
 
 // });
 
-
 //Rest Api will be started.....
 app.get('/api/users',(req,res) =>{
     return res.json(users)
