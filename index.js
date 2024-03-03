@@ -15,8 +15,6 @@ app.use((req, res, next) => {
     fs.appendFile('log.txt', `\n${Date.now()}: ${req.ip} ${req.method}: ${req.path}`,(err, data)=>{
         next()
     });   
-
-
    // req.myUsername = "saurabhkumar.dev"
     // return res.json("Hello from middleware 1")
 })
@@ -26,8 +24,6 @@ app.use((req, res, next) => {
 //     next()
 
 // })
-
-
 
 
 //api will be use in html tag in browser.
