@@ -4,7 +4,7 @@ const users = require('./MOCK_DATA.json')
 const app = express()
 const PORT = 8000;
 
-
+//api will be use in html tag in browser.
 app.get('/users',(req,res) =>{
     const html =`
     <ul>
@@ -14,6 +14,7 @@ app.get('/users',(req,res) =>{
     res.send(html)
 
 });
+
 
 //Rest Api will be started.....
 app.get('/api/users',(req,res) =>{
@@ -26,6 +27,7 @@ app.get('/api/users/:id',(req,res) =>{
     return res.json(user);
 })
 
+
 app.route("api/users/:id").get((req,res) =>{
         const id = Number(req.params.id);
         const user = users.find((user) => user.id === id);
@@ -37,6 +39,8 @@ app.route("api/users/:id").get((req,res) =>{
     .delete((req,res) =>{
         return res.json({status: "deleted"});
     })
+
+
 
 // app.post('api/users',(req,res)=>{
 //    return res.json({status : "pending"})
