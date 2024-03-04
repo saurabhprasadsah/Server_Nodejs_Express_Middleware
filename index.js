@@ -1,11 +1,8 @@
-
 const express = require("express")
 const users = require('./MOCK_DATA.json')
 const fs = require("fs")
-
 const app = express()
 const PORT = 9000;
-
 
 //middleware for express
 app.use(express.urlencoded({urlencoded: false}));
@@ -18,6 +15,8 @@ app.use((req, res, next) => {
    // req.myUsername = "saurabhkumar.dev"
     // return res.json("Hello from middleware 1")
 })
+
+
 // app.use((req, res, next) => {
 //     console.log("Hello from middleware 2", req.myUsername);
 //     // return res.json("HEY")
@@ -44,11 +43,13 @@ app.get('/api/users',(req,res) =>{
     return res.json(users)
 })
 
+
 app.get('/api/users/:id',(req,res) =>{
     const id = Number(req.params.id);
     const user = users.find((user) => user.id === id);
     return res.json(user);
 })
+
 
 app.route("api/users/:id").get((req,res) =>{
         const id = Number(req.params.id);
