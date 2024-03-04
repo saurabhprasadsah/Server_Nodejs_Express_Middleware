@@ -39,6 +39,7 @@ app.get('/users',(req,res) =>{
 
 //Rest Api
 app.get('/api/users',(req,res) =>{
+    res.setHeader("myname", "saurabh kumar");
     console.log(req.myUsername);
     return res.json(users)
 })
@@ -70,7 +71,7 @@ app.post('/api/users',(req,res)=>{
  //  console.log("Body", body);
    users.push({ ...body, id: users.length +1 });
    fs.writeFile('./MOCK_DATA.json', JSON.stringify(users), (err, data)=>{
-   return res.json({status : "success", id: users.length})
+   return res.status(201).json({status : "success", id: users.length})
    })
 })
 
